@@ -26,8 +26,9 @@ jobs:
         run: |
           mkdir output 
           ls -al
-          cp -r ./ ./output/
-      
+          # cp -r ./ ./output/
+          rsync -av --exclude='.*/' --exclude='./output/' ./ ./output
+          
       - name: Pushes to another repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
